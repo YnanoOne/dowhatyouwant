@@ -69,7 +69,7 @@ class Propagator():
         self.zvalues = np.array(zvalues)
         N_z = zvalues.size
 
-        frequency_z = np.sqrt(1/self.wavelength - self.frequency_mesh[0]**2 - self.frequency_mesh[1]**2) 
+        frequency_z = np.sqrt(1/self.wavelength**2 - self.frequency_mesh[0]**2 - self.frequency_mesh[1]**2) 
         frequency_z = np.tile(frequency_z[:,:,np.newaxis],(1,1,N_z))
 
         translated_spectrum = self.angular_spectrum[:,:,np.newaxis]*np.exp(2*np.pi*1j*frequency_z*self.zvalues[np.newaxis,np.newaxis,:])
